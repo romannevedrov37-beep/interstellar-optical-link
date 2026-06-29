@@ -75,36 +75,45 @@ The project will measure:
 - latency expansion;
 - the difference in performance between no FEC, Reed–Solomon only, and Reed–Solomon with interleaving.
 
-## Planned Structure of the Repository
-interstellar-optical-link/
-├── README.md
-├── requirements.txt
-├── run_demo.py
-├── run_experiments.py
-├── configs/
-│   ├── default.yaml
-│   └── experiment_plan.yaml
-├── data/
-│   └── sample_payload.bin
-├── docs/
-│   ├── research_question.md
-│   ├── project_scope.md
-│   ├── model_assumptions.md
-│   ├── literature_notes.md
-│   ├── main_findings.md
-│   └── checkpoints/
-├── figures/
-├── notebooks/
-├── results/
-├── src/
-│   ├── channel/
-│   ├── detector/
-│   ├── modem/
-│   ├── framing/
-│   ├── fec/
-│   ├── metrics/
-│   └── experiments/
-└── tests/
+## Planned Repository Structure
+
+ Root Files
+README.md — main project overview and documentation.
+requirements.txt — Python dependencies required to run the project.
+run_demo.py — a simple end-to-end demonstration of the simulation pipeline.
+run_experiments.py — script for running larger experiment sweeps and Monte Carlo trials.
+
+ Configuration
+configs/default.yaml — default simulation parameters.
+configs/experiment_plan.yaml — planned experiment matrix for comparing different recovery strategies.
+
+ Data
+data/sample_payload.bin — sample structured message or binary payload used for testing.
+
+ Documentation
+docs/research_question.md — research question and hypothesis.
+docs/project_scope.md — project boundaries, goals, and exclusions.
+docs/model_assumptions.md — physical and computational assumptions used in the simulation.
+docs/literature_notes.md — notes from scientific and technical sources.
+docs/main_findings.md — final conclusions and key results.
+docs/checkpoints/ — weekly progress reports and development notes.
+
+ Source Code
+src/channel/ — optical channel model, photon-rate calculations, erasure models, and burst-loss simulation.
+src/detector/ — SNSPD-like detector model, including efficiency, dark counts, and timing jitter.
+src/modem/ — PPM encoding and decoding.
+src/framing/ — message framing, packet structure, headers, and checksums.
+src/fec/ — error-control coding, including Hamming-style baseline, Reed–Solomon coding, and interleaving.
+src/metrics/ — recovery success rate, BER, SER, PER, overhead, and failure metrics.
+src/experiments/ — Monte Carlo trials and parameter sweep logic.
+
+ Outputs
+results/ — raw experiment results in CSV or similar formats.
+figures/ — generated plots and final visualizations.
+notebooks/ — exploratory notebooks for link budget, Poisson validation, and recovery demos.
+
+ Tests
+tests/ — unit tests for the main components of the simulation pipeline.
 
 ## Current Status
 
