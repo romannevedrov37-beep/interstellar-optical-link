@@ -103,7 +103,6 @@ data/sample_payload.bin — sample structured message or binary payload used for
  Documentation
 docs/research_question.md — research question and hypothesis.
 docs/project_scope.md — project boundaries, goals, and exclusions.
-
 docs/model_assumptions.md — physical and computational assumptions used in the simulation.
 docs/literature_notes.md — notes from scientific and technical sources.
 docs/bibliography.bib — BibTeX bibliography file containing formal references forthe final report and presentation.
