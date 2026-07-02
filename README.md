@@ -105,7 +105,7 @@ docs/research_question.md — research question and hypothesis.
 docs/project_scope.md — project boundaries, goals, and exclusions.
 docs/model_assumptions.md — physical and computational assumptions used in the simulation.
 docs/literature_notes.md — notes from scientific and technical sources.
-docs/bibliography.bib — BibTeX bibliography file containing formal references for the final report and presentation.
+docs/bibliography.bib — BibTeX bibliography file containing formal references forthe final report and presentation.
 docs/main_findings.md — final conclusions and key results.
 docs/checkpoints/ — weekly progress reports and development notes.
 
