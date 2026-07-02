@@ -61,6 +61,16 @@ The project models a communication channel as a sequence of layers:
 - reconstructed message 
 - The current goal of the project is to create a reproducible simulation environment in which different communication strategies can be compared under controlled assumptions.
 
+## Strategies
+The project compares several communication strategies:
+
+- PPM-only transmission without forward error correction;
+- PPM with Reed–Solomon coding;
+- PPM with Reed–Solomon coding and interleaving;
+- PPM with Reed–Solomon coding, interleaving, and erasure-aware decoding.
+
+These strategies are tested under controlled photon-starved channel conditions, including random symbol loss, packet erasures, burst-loss events, background noise, and detector uncertainty.
+
 ## Metrics
 
 The project will measure:
