@@ -214,6 +214,7 @@ These concept notes are currently draft explanations generated with the assistan
 They will be verified and expanded using scientific papers, technical reports, and official documentation.
 
 ## Source Notes
+### Source 01
 **Title:** A superconducting nanowire photon number resolving four-quadrant detector-based Gigabit deep-space laser communication receiver prototype  
 **Authors:** Hao Hao et al.  
 **Year:** 2022  
@@ -221,6 +222,14 @@ They will be verified and expanded using scientific papers, technical reports, a
 **Category:** SNSPD / PPM / FEC / Photon-sensitive receiver  
 **Link:** https://arxiv.org/abs/2212.04927
 
+**Main idea:**  
+This paper demonstrates a photon-sensitive deep-space laser communication receiver prototype based on an SNSPD array.
+**Why it matters for this project:**  
+This source connects SNSPD-based photon detection with PPM communication and FEC processing, which matches several layers of the project pipeline.
+**Useful concepts:**  
+SNSPD array, PPM, FEC, photon-sensitive receiver, background noise, photons per bit.
+
+### Source 02
 **Title:** Communicating at a record 14.5 bits per received photon through a photon-starved channel  
 **Authors:** Sai Kanth Dacha, René-Jean Essiambre, Alexei Ashikhimin, Andrea Blanco-Redondo, Frank R. Kschischang, Konrad Banaszek, Yuanhang Zhang  
 **Year:** 2025  
@@ -229,6 +238,15 @@ They will be verified and expanded using scientific papers, technical reports, a
 **Category:** Photon-starved channel / Photon-starved receiver / Photon information efficiency 
 **Link:** https://journals.aps.org/prresearch/abstract/10.1103/mmth-7tww  
 
+**Main idea:**  
+This paper discusses optical communication in a photon-starved regime, where communication performance is strongly limited by the number of received photons.
+**Why it matters for this project:**  
+This source supports the idea that long-distance optical communication can be limited by photon information efficiency and that a receiver may need to extract information from very small numbers of detected photons.
+**Useful concepts:**  
+Photon-starved channel, photon information efficiency, bits per photon, optical communication, received photon limitation.
+
+
+### Source 03
 **Title:** Superconducting Nanowire Single Photon Detectors for DSOC  
 **Author / Organization:** NASA Jet Propulsion Laboratory, Microdevices Laboratory  
 **Year:** 2022  
@@ -236,6 +254,14 @@ They will be verified and expanded using scientific papers, technical reports, a
 **Category:** SNSPD / Detector Model / DSOC / Photon-counting receiver  
 **Link:** https://microdevices.jpl.nasa.gov/news/superconducting-nanowire-single-photon-detectors-for-dsoc/
 
+**Main idea:**  
+JPL developed superconducting nanowire single-photon detector technology for NASA’s Deep Space Optical Communications project.
+**Why it matters for this project:**  
+This source supports the project’s use of an SNSPD-like detector model for photon-counting reception in deep-space optical communication.
+**Useful concepts:**  
+SNSPD, photon-counting receiver, DSOC ground terminal, time-tagging photon arrivals, detector count rate.
+
+### Source 04
 **Title:** Reed-Solomon and Concatenated Codes with Applications in Space Communication  
 **Authors:** Polykarpos Thomadakis and Antonios Argyriou  
 **Year:** 2016  
@@ -243,6 +269,14 @@ They will be verified and expanded using scientific papers, technical reports, a
 **Category:** Forward Error Correction / Reed–Solomon / Space communication  
 **Link:** https://arxiv.org/abs/1608.03961
 
+**Main idea:**  
+This paper explains Reed–Solomon codes, decoding algorithms, and their use in space communication coding systems.
+**Why it matters for this project:**  
+This source supports the project’s use of Reed–Solomon coding as a forward error correction method for recovering corrupted or erased data.
+**Useful concepts:**  
+RS codes, decoding, concatenated coding, CCSDS-style space communication coding systems.
+
+### Source 05
 **Title:** Optical Communications Coding and Synchronization  
 **Author / Organization:** Consultative Committee for Space Data Systems (CCSDS)  
 **Year:** 2019  
@@ -251,13 +285,29 @@ They will be verified and expanded using scientific papers, technical reports, a
 **Category:** Optical communication / Coding / Synchronization / PPM / Interleaving  
 **Link:** https://ccsds.org/Pubs/142x0b1.pdf  
 
+**Main idea:**  
+This standard defines coding and synchronization functions for optical space communication systems, including channel coding, synchronization, modulation-related processing, channel interleaving, slot mapping, and guard slot insertion.
+**Why it matters for this project:**  
+This source supports the project’s layered communication pipeline: frame preparation, channel coding, interleaving, modulation into optical slots, synchronization, and receiver-side frame validation.
+**Useful concepts:**  
+Channel coding, synchronization, transfer frames, channel interleaver, slot mapper, guard slots, optical space link, PPM-related signaling.
+
+### Source 06
 **Title:** Dummynet and Forward Error Correction  
 **Author:** Luigi Rizzo  
 **Year:** 1998  
 **Type:** Conference paper / technical paper  
 **Category:** Forward Error Correction / Erasure coding / Packet loss  
-**Link:** https://www.usenix.org/legacy/publications/library/proceedings/
+**Link:** https://www.usenix.org/legacy/publications/library/proceedings
 
+**Main idea:**  
+This paper presents a software implementation of an erasure code and explains how Forward Error Correction can reduce or remove the need for retransmissions when communication errors or packet losses occur.
+**Why it matters for this project:**  
+This source supports the general FEC idea used in the project that is adding redundancy before transmission so that missing or erased data can be reconstructed at the receiver.
+**Useful concepts:**  
+Forward Error Correction, erasure code, packet loss, retransmission avoidance, unreliable communication channels.
+
+### Source 07
 **Title:** Radiation detector deadtime and pile up: A review of the status of science  
 **Authors:** Shoaib Usman, Amol Patil  
 **Year:** 2018  
@@ -265,6 +315,13 @@ They will be verified and expanded using scientific papers, technical reports, a
 **Journal:** Nuclear Engineering and Technology  
 **Category:** Detector Model / Dead time / Count loss / Pulse pile-up  
 **Link:** https://www.sciencedirect.com/science/article/pii/S1738573318302596  
+
+**Main idea:**  
+This review explains detector dead time and pulse pile-up, including how detectors can lose counts or produce distorted measurements at high count rates.
+**Why it matters for this project:**  
+This source supports the inclusion of detector limitations such as dead time, count loss, and pulse pile-up in a simplified detector model.
+**Useful concepts:**  
+Dead time, resolving time, count loss, pulse pile-up, paralyzable detector model, nonparalyzable detector model.
 
 
 
