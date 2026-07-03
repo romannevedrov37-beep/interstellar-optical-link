@@ -214,4 +214,29 @@ These concept notes are currently draft explanations generated with the assistan
 They will be verified and expanded using scientific papers, technical reports, and official documentation.
 
 ## Source Notes
+## 1.3 Photon-Starved Receiver
+**Title:** A superconducting nanowire photon number resolving four-quadrant detector-based Gigabit deep-space laser communication receiver prototype  
+**Authors:** Hao Hao et al.  
+**Year:** 2022  
+**Type:** arXiv preprint  
+**Category:** SNSPD / PPM / FEC / Photon-sensitive receiver  
+**Link:** https://arxiv.org/abs/2212.04927
+
+## 2. Detector Model
+### SNSPD-like detector
+**Title:** Superconducting Nanowire Single Photon Detectors for DSOC  
+**Author / Organization:** NASA Jet Propulsion Laboratory, Microdevices Laboratory  
+**Year:** 2022  
+**Type:** Official technical webpage  
+**Category:** SNSPD / Detector Model / DSOC / Photon-counting receiver  
+**Link:** https://microdevices.jpl.nasa.gov/news/superconducting-nanowire-single-photon-detectors-for-dsoc/
+
+## 3. Forward Error Correction
+**Title:** Reed-Solomon and Concatenated Codes with Applications in Space Communication  
+**Authors:** Polykarpos Thomadakis and Antonios Argyriou  
+**Year:** 2016  
+**Type:** arXiv preprint  
+**Category:** Forward Error Correction / Reed–Solomon / Space communication  
+**Link:** https://arxiv.org/abs/1608.03961
+
 
