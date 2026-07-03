@@ -214,7 +214,6 @@ These concept notes are currently draft explanations generated with the assistan
 They will be verified and expanded using scientific papers, technical reports, and official documentation.
 
 ## Source Notes
-## 1.3 Photon-Starved Receiver
 **Title:** A superconducting nanowire photon number resolving four-quadrant detector-based Gigabit deep-space laser communication receiver prototype  
 **Authors:** Hao Hao et al.  
 **Year:** 2022  
@@ -222,8 +221,14 @@ They will be verified and expanded using scientific papers, technical reports, a
 **Category:** SNSPD / PPM / FEC / Photon-sensitive receiver  
 **Link:** https://arxiv.org/abs/2212.04927
 
-## 2. Detector Model
-### SNSPD-like detector
+**Title:** Communicating at a record 14.5 bits per received photon through a photon-starved channel  
+**Authors:** Sai Kanth Dacha, René-Jean Essiambre, Alexei Ashikhimin, Andrea Blanco-Redondo, Frank R. Kschischang, Konrad Banaszek, Yuanhang Zhang  
+**Year:** 2025  
+**Type:** Open-access journal article  
+**Journal:** Physical Review Research  
+**Category:** Photon-starved channel / Photon-starved receiver / Photon information efficiency 
+**Link:** https://journals.aps.org/prresearch/abstract/10.1103/mmth-7tww  
+
 **Title:** Superconducting Nanowire Single Photon Detectors for DSOC  
 **Author / Organization:** NASA Jet Propulsion Laboratory, Microdevices Laboratory  
 **Year:** 2022  
@@ -231,12 +236,35 @@ They will be verified and expanded using scientific papers, technical reports, a
 **Category:** SNSPD / Detector Model / DSOC / Photon-counting receiver  
 **Link:** https://microdevices.jpl.nasa.gov/news/superconducting-nanowire-single-photon-detectors-for-dsoc/
 
-## 3. Forward Error Correction
 **Title:** Reed-Solomon and Concatenated Codes with Applications in Space Communication  
 **Authors:** Polykarpos Thomadakis and Antonios Argyriou  
 **Year:** 2016  
 **Type:** arXiv preprint  
 **Category:** Forward Error Correction / Reed–Solomon / Space communication  
 **Link:** https://arxiv.org/abs/1608.03961
+
+**Title:** Optical Communications Coding and Synchronization  
+**Author / Organization:** Consultative Committee for Space Data Systems (CCSDS)  
+**Year:** 2019  
+**Type:** Recommended Standard / Blue Book  
+**Standard:** CCSDS 142.0-B-1  
+**Category:** Optical communication / Coding / Synchronization / PPM / Interleaving  
+**Link:** https://ccsds.org/Pubs/142x0b1.pdf  
+
+**Title:** Dummynet and Forward Error Correction  
+**Author:** Luigi Rizzo  
+**Year:** 1998  
+**Type:** Conference paper / technical paper  
+**Category:** Forward Error Correction / Erasure coding / Packet loss  
+**Link:** https://www.usenix.org/legacy/publications/library/proceedings/
+
+**Title:** Radiation detector deadtime and pile up: A review of the status of science  
+**Authors:** Shoaib Usman, Amol Patil  
+**Year:** 2018  
+**Type:** Open-access review article  
+**Journal:** Nuclear Engineering and Technology  
+**Category:** Detector Model / Dead time / Count loss / Pulse pile-up  
+**Link:** https://www.sciencedirect.com/science/article/pii/S1738573318302596  
+
 
 
