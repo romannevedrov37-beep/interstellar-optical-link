@@ -15,71 +15,199 @@ probabilistic behavior of photon counting.
 The main question is whether it is possible to reconstruct structured messages when the received signal is weak, noisy, and partially missing.
 
 ## 1.1 Laser Transmitter and PPM Encoding
-The modulator drives an electric current as follows: the computer outputs data, for example the combination `0010`, using the logic of the pulse-position modulation (PPM) method. 
-The electric current excites the active medium inside the laser, and when the particles in this medium transition to a lower energy state, they can emit photons. 
-The laser’s design causes these photons to be formed in the same optical mode, meaning that they have nearly identical frequency, phase coherence, and direction within the parameters of the laser beam.
-The technology is designed to select and amplify the desired order of photons through a process known as stimulated emission.
-According to quantum mechanics, when a photon passes near an excited particle in the active medium, it can cause that particle to transition to a lower energy state and emit another photon.
-As a result, the photons have nearly identical frequency, phase coherence, and direction within the parameters of the laser beam.
-The key process is avalanche-like amplification due to stimulated emission — a process in which one photon can lead to the generation of additional photons in the same optical mode within a very short time. 
-The time it takes for this photon amplification to build up is extremely small. For us, it appears almost instantaneous, in some regimes on the scale of picoseconds — trillionths of a second. 
-Therefore, as soon as the modulator sends a current pulse, the laser pulse has already formed and left the transmitter as a compact coherent packet.
+In this project, the transmitter is modeled as a system that converts digital data into timed optical pulses using pulse-position modulation (PPM).
 
-At the transmitter output, to prevent the extremely narrow photon beam from diverging too quickly, it must be made wider and more collimated. 
-After generation, the laser beam passes through a beam expander or a telescopic optical system. 
-The entire laser design is arranged so that photons emitted spontaneously and not coupled into the main optical mode are mostly lost, scattered, or do not contribute to the useful directed beam. 
-Furthermore, the mirrors and optical elements are specifically designed for this process, so they have minimal losses at the desired wavelength. 
-When the photons exit the transmitting optics, they can be described both as a stream of photons and as a coherent electromagnetic field. 
-At this stage, we have a powerful directed laser pulse, in which the photons propagate almost parallel to one another and remain phase-coherent within the parameters of the beam. 
-This pulse carries information through its timing structure.
+In PPM, information is represented by the position of a short pulse inside a predefined time frame. For example, a group of bits such as `0010` can be mapped to a specific PPM slot. The encoder determines which slot should contain the pulse, and the modulator generates the corresponding electrical control signal for the laser source.
 
-Let’s move on to the stage of flight through distances on the order of `10^16` meters. Due to diffraction, the beam does not remain perfectly parallel. 
-As it travels, the beam slowly expands into a cone, causing the photons to spread over an increasingly large area, thereby reducing the flux density.
+The laser source converts this electrical input into coherent optical radiation. In simplified terms, electrical pumping excites the active medium of the laser. Through stimulated emission, photons are amplified in a selected optical mode, producing radiation with narrow spectral bandwidth, high directionality, and phase coherence within the limits of the laser system.
 
-As it approaches Earth, instead of a compact beam, we have a gigantic invisible beam spot covering a large region of space. 
-When an Earth-based telescope intercepts only a microscopic fraction of this beam, rare, isolated, individual photons strike the telescope’s mirror.
+When the modulator sends a control pulse, the laser emits a short optical pulse at the required time. In a PPM system, the information is carried mainly by the timing position of this pulse rather than by continuous changes in optical intensity.
+
+The laser transmitter is treated as a simplified source of timed coherent optical pulses that can be sent through the photon-starved optical channel.
 
 ## 1.2 Beam Propagation and Diffraction
-The propagation of a laser beam over interstellar distances is inevitably subject to the laws of diffraction, which leads to significant beam broadening and a dramatic drop in the signal’s power density. Even when using a coherent laser source and a high-quality optical system, it is impossible to obtain a perfectly parallel beam, since the finite size of the aperture causes the formation of a diffraction pattern. For a circular aperture, the divergence of the central maximum is typically estimated using the Rayleigh diffraction limit, which relates the divergence angle to the wavelength of the radiation and the diameter of the transmitting optics. Consequently, increasing the aperture and decreasing the wavelength allow for a reduction in divergence and an increase in power density at the receiver. However, at interstellar distances, even small divergence angles result in the formation of an astronomically large light spot, whose radius in the far field is determined by the geometric ratio between the divergence angle and the distance to the receiver. As a result, the energy is distributed over a large area, and the received power is determined by the ratio of the receiving aperture area to the area of the illuminated spot. This requires the use of large telescopes, precise pointing, sensitive photodetectors, narrowband filtering, and error correction methods. 
-Additional factors include the motion of stars and spacecraft, signal propagation delay, background radiation, as well as absorption and scattering by interstellar dust and gas. When a communication node is located on the surface of a planet, atmospheric turbulence, cloud cover, and wavefront distortions play a significant role.
-Diffraction is a fundamental limitation of interstellar optical communication, determining the minimum beam divergence, the size of the light spot, and the energy balance of the channel.
+After generation, the laser beam passes through transmitting optics such as a beam expander or a telescope-like optical system. The purpose of this stage is to increase the beam diameter, improve collimation, reduce divergence, and point the beam toward the target receiver.
+
+Even with strong collimation, the beam cannot remain perfectly parallel over interstellar distances. Because of diffraction, the beam gradually expands during propagation. As the beam footprint grows, the transmitted photons are distributed over an increasingly large area, which reduces the photon flux available to the receiver.
+
+Over distances on the order of `10^16` meters, this spreading becomes a central limitation of interstellar optical communication.
 
 ## 1.3 Photon-Starved Receiver
-In a situation where a ground-based telescope captures only a very small fraction of the transmitted photon flux, the receiver operates based on rare photon detections within discrete time intervals. Some intervals may contain signal photons, others may contain only background photons, and in still others, no photons may be detected at all.
-The receiver’s task is to estimate in which time interval the transmitted PPM pulse was most likely present. This is challenging because several factors influence the number of detected photons:
-the low frequency of signal photons;
-background photons;
-detector efficiency;
-dark counts;
-synchronization fluctuations;
-randomness in photon counting;
-possible missing symbols or packets.
-Since the arrival of photons is random, the receiver cannot assume that the correct interval will always contain a large number of photons. Instead, the receiver must make a probabilistic decision based on the number of photons detected in each interval.
-For example, in a PPM frame, the receiver can compare the number of photons in all slots and select the slot that provides the strongest evidence of the presence of the transmitted pulse. If the evidence is too weak or ambiguous, the receiver may mark the symbol as deleted rather than make a potentially erroneous decision.
-This is important because missing symbols are often easier for error-correcting codes, such as Reed–Solomon, to handle than errors involving unknown symbols.
+In a situation where a ground-based or space-based telescope captures only a very small fraction of the transmitted photon flux, the receiver operates using rare photon detections within discrete PPM time slots. Some slots may contain signal photons, some may contain only background photons, and some may contain no detected photons at all.
+
+The receiver’s task is to estimate which time slot most likely contained the transmitted PPM pulse. This is challenging because the observed photon counts are influenced by several factors:
+
+- low signal photon rate;
+- background photons;
+- detector efficiency;
+- dark counts;
+- timing jitter;
+- synchronization uncertainty;
+- photon-counting randomness;
+- possible symbol or packet erasures.
+
+Since photon arrivals are random, the receiver cannot assume that the correct slot will always contain a large number of detected photons. Instead, the receiver must make a probabilistic decision based on the photon counts observed in each slot.
+
+For example, in a PPM frame, the receiver can compare photon counts across all slots and select the slot that provides the strongest evidence for the transmitted pulse. If the evidence is too weak or ambiguous, the receiver may mark the symbol as an erasure instead of forcing a potentially incorrect decision.
+
+This is important because erasures are often easier for error-correcting codes such as Reed–Solomon to handle than unknown symbol errors.
 
 ## 2. Detector Model
 The detector model describes how the receiver converts incoming photons into measured photon-count events.
-In this project, the detector is modeled as an SNSPD-like photon-counting receiver. SNSPD stands for Superconducting Nanowire Single-Photon Detector. A real SNSPD is a highly sensitive detector capable of registering individual photons, but this project does not model the full hardware physics of the device. Instead, it uses a simplified detector abstraction with the parameters most relevant for communication reliability.
+
+In this project, the detector is modeled as an SNSPD-like photon-counting detector. SNSPD stands for Superconducting Nanowire Single-Photon Detector. A real SNSPD is a highly sensitive detector capable of registering individual photons, but this project does not model the full hardware physics of the device. Instead, it uses a simplified detector abstraction with the parameters most relevant for communication reliability.
+
 The detector model answers the question:
-If photons arrive at the receiving telescope, how many of them are actually detected, and how reliable are those detections?
+
+> If photons arrive at the detector input, how many of them are actually detected, and how reliable are those detections?
+
 The main parameters of the detector model are:
-detector efficiency — the probability that an incoming photon is actually registered;
-dark counts — false detection events that occur even when no signal photon arrives;
-background counts — photons from external sources such as stars, sky background, or other optical noise;
-timing jitter — uncertainty in the measured arrival time of a photon;
-maximum count rate — the approximate limit on how many photon events the detector can register in a given time interval.
-In the simulation, the detector receives photon-count events from the photon-starved channel and produces observed counts for each PPM time slot. These observed counts are not always equal to the true transmitted signal because photons may be missed, false counts may be added, and photon arrival times may be shifted by timing jitter
 
+- **detector efficiency** — the probability that an incoming photon is actually registered;
+- **dark counts** — false detection events that occur even when no signal photon arrives;
+- **background counts** — detected events caused by background photons from external sources such as stars, sky background, or other optical noise;
+- **timing jitter** — uncertainty in the measured arrival time of a photon;
+- **maximum count rate** — the approximate limit on how many photon events the detector can register in a given time interval;
+- **dead time or recovery time** — a short period after a detection during which the detector may be unable to register another photon.
 
-The detector output can be used by the receiver to decide which PPM slot most likely contained the transmitted pulse. If one slot has clearly stronger photon evidence than the others, the receiver can choose that slot as the decoded symbol. If the evidence is weak or ambiguous, the receiver may mark the symbol as an erasure instead of forcing a possibly incorrect decision.
+In the simulation, the detector receives incoming photons from the optical receiver path and produces observed photon-count events for each PPM time slot. These observed counts are not always equal to the true transmitted signal because photons may be missed, false counts may be added, and photon arrival times may be shifted by timing jitter.
+
+The detector output is then passed to the PPM demodulation stage. The demodulator uses the observed photon counts to estimate which PPM slot most likely contained the transmitted pulse. If the evidence is weak or ambiguous, the symbol may be marked as an erasure instead of forcing a potentially incorrect decision.
 
 ## 3. Forward Error Correction
 
+Forward Error Correction (FEC) is a method of adding redundancy to transmitted data before it passes through the communication channel. The goal is to allow the receiver to recover the original message even if some symbols are corrupted, lost, or marked as unreliable.
+
+In this project, Reed–Solomon coding is used as the main FEC method. Reed–Solomon is a symbol-level error-correcting code, which makes it suitable for packetized or byte-oriented data. It is especially useful when the receiver can identify unreliable symbols as erasures.
+
+A Reed–Solomon code is commonly written as `RS(n, k)`, where:
+
+- `k` is the number of original information symbols;
+- `n` is the total number of symbols after encoding;
+- `n - k` is the number of added parity symbols.
+
+For example, an `RS(7, 3)` code takes 3 information symbols and adds 4 parity symbols, producing a 7-symbol codeword:
+
+```text
+D1 D2 D3 → D1 D2 D3 P1 P2 P3 P4
+```
+
+If some symbols are lost during transmission, the decoder may still recover the original data:
+
+```text
+D1 ? D3 P1 ? P3 P4
+```
+
+The `?` symbols represent erasures, meaning that the receiver knows which symbol positions are missing or unreliable.
+
+For unknown symbol errors, where the decoder does not know the error positions, an `RS(n, k)` code can correct up to:
+
+```text
+t = floor((n - k) / 2)
+```
+
+unknown symbol errors.
+
+For erasures, where the unreliable positions are known, Reed–Solomon can handle up to `n - k` erased symbols. More generally, for a mixture of unknown errors and erasures, successful decoding requires:
+
+```text
+2e + s ≤ n - k
+```
+
+where `e` is the number of unknown symbol errors and `s` is the number of erasures.
+
+In many practical examples, one Reed–Solomon symbol is treated as one byte, or 8 bits. More generally, an RS symbol is an element of a finite field, so its size depends on the chosen code parameters.
+
+Reed–Solomon coding and PPM modulation operate at different layers of the communication chain. Reed–Solomon protects the data by adding parity symbols, while PPM converts the protected bitstream into timed optical pulses.
+
+The transmission order is:
+
+```text
+structured message
+bytes
+Reed–Solomon encoding
+protected symbols
+bitstream
+PPM modulation
+optical pulses
+photon-starved channel
+```
+
+At the receiver, the process is reversed:
+
+```text
+photon detections
+PPM demodulation
+recovered bitstream
+RS symbols
+Reed–Solomon decoding
+recovered message
+```
+
+This distinction is important because an RS symbol is not the same as a PPM symbol. An RS symbol is a data symbol used for error correction, while a PPM symbol is a time-slot pattern used for optical modulation.
+
+In this project, Reed–Solomon coding is used to test whether structured messages can still be recovered when the photon-starved channel produces random errors, erasures, or burst-loss events.
+
 ## 4. Erasures and Burst Loss
+An erasure is a symbol or packet that the receiver identifies as missing or unreliable.
 
+This is different from an unknown error. In an unknown error, the receiver gets a value, but the value may be wrong and the receiver does not know where the error is. In an erasure, the receiver knows the position of the missing or unreliable data.
+
+Example:
+
+```text
+original:  D1 D2 D3 D4
+received:  D1 ?  D3 D4
+```
+
+The `?` symbol represents an erasure.
+
+Erasures are important because error-correcting codes such as Reed–Solomon can usually handle known missing positions more effectively than unknown symbol errors.
+
+Burst loss is a group of consecutive losses or erasures.
+
+Example:
+
+```text
+original:  D1 D2 D3 D4 D5 D6 D7 D8
+received:  D1 D2 ?  ?  ?  D6 D7 D8
+```
+
+This type of loss is more damaging than isolated random erasures because it can destroy a continuous part of the encoded data.
+
+In this project, erasures and burst-loss events are used to model unreliable photon-starved reception. They may be caused by weak signal intervals, detector uncertainty, synchronization problems, pointing errors, or temporary increases in background noise.
+
+The main purpose of this section is to define the loss patterns that will later be tested with Reed–Solomon coding and interleaving.
 ## 5. Interleaving
+An erasure is a symbol or packet that the receiver identifies as missing or unreliable.
 
+This is main difference: in an unknown error, the receiver gets a value, but the value may be wrong and the receiver does not know where the error is. In an erasure, the receiver knows the position of the missing or unreliable data.
+
+Example:
+
+```text
+original:  D1 D2 D3 D4
+received:  D1 ?  D3 D4
+```
+
+The `?` symbol represents an erasure.
+
+Erasures are important because error-correcting codes such as Reed–Solomon can usually handle known missing positions more effectively than unknown symbol errors.
+
+Burst loss is a group of consecutive losses or erasures.
+
+Example:
+
+```text
+original:  D1 D2 D3 D4 D5 D6 D7 D8
+received:  D1 D2 ?  ?  ?  D6 D7 D8
+```
+
+This type of loss is more damaging than isolated random erasures because it can destroy a continuous part of the encoded data.
+
+In this project, erasures and burst-loss events are used to model unreliable photon-starved reception. They may be caused by weak signal intervals, detector uncertainty, synchronization problems, pointing errors, or temporary increases in background noise.
+
+The main purpose of this section is to define the loss patterns that will later be tested with Reed–Solomon coding and interleaving.
 ## Note
 
 These concept notes are currently draft explanations generated with the assistance of AI.  
