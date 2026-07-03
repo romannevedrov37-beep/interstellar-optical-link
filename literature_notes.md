@@ -237,8 +237,7 @@ SNSPD array, PPM, FEC, photon-sensitive receiver, background noise, photons per 
 **Year:** 2025  
 **Type:** Open-access journal article  
 **Journal:** Physical Review Research  
-**Category:** Photon-starved channel / Photon-starved receiver / Photon information efficiency 
-
+**Category:** Photon-starved channel / Photon-starved receiver / Photon information efficiency  
 **Link:** https://journals.aps.org/prresearch/abstract/10.1103/mmth-7tww  
 
 **Main idea:**  
