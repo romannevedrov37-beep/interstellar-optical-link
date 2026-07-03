@@ -224,8 +224,10 @@ They will be verified and expanded using scientific papers, technical reports, a
 
 **Main idea:**  
 This paper demonstrates a photon-sensitive deep-space laser communication receiver prototype based on an SNSPD array.
+
 **Why it matters for this project:**  
 This source connects SNSPD-based photon detection with PPM communication and FEC processing, which matches several layers of the project pipeline.
+
 **Useful concepts:**  
 SNSPD array, PPM, FEC, photon-sensitive receiver, background noise, photons per bit.
 
@@ -240,8 +242,10 @@ SNSPD array, PPM, FEC, photon-sensitive receiver, background noise, photons per 
 
 **Main idea:**  
 This paper discusses optical communication in a photon-starved regime, where communication performance is strongly limited by the number of received photons.
+
 **Why it matters for this project:**  
 This source supports the idea that long-distance optical communication can be limited by photon information efficiency and that a receiver may need to extract information from very small numbers of detected photons.
+
 **Useful concepts:**  
 Photon-starved channel, photon information efficiency, bits per photon, optical communication, received photon limitation.
 
@@ -256,8 +260,10 @@ Photon-starved channel, photon information efficiency, bits per photon, optical 
 
 **Main idea:**  
 JPL developed superconducting nanowire single-photon detector technology for NASA’s Deep Space Optical Communications project.
+
 **Why it matters for this project:**  
 This source supports the project’s use of an SNSPD-like detector model for photon-counting reception in deep-space optical communication.
+
 **Useful concepts:**  
 SNSPD, photon-counting receiver, DSOC ground terminal, time-tagging photon arrivals, detector count rate.
 
@@ -271,8 +277,10 @@ SNSPD, photon-counting receiver, DSOC ground terminal, time-tagging photon arriv
 
 **Main idea:**  
 This paper explains Reed–Solomon codes, decoding algorithms, and their use in space communication coding systems.
+
 **Why it matters for this project:**  
 This source supports the project’s use of Reed–Solomon coding as a forward error correction method for recovering corrupted or erased data.
+
 **Useful concepts:**  
 RS codes, decoding, concatenated coding, CCSDS-style space communication coding systems.
 
@@ -287,8 +295,10 @@ RS codes, decoding, concatenated coding, CCSDS-style space communication coding 
 
 **Main idea:**  
 This standard defines coding and synchronization functions for optical space communication systems, including channel coding, synchronization, modulation-related processing, channel interleaving, slot mapping, and guard slot insertion.
+
 **Why it matters for this project:**  
 This source supports the project’s layered communication pipeline: frame preparation, channel coding, interleaving, modulation into optical slots, synchronization, and receiver-side frame validation.
+
 **Useful concepts:**  
 Channel coding, synchronization, transfer frames, channel interleaver, slot mapper, guard slots, optical space link, PPM-related signaling.
 
@@ -302,8 +312,10 @@ Channel coding, synchronization, transfer frames, channel interleaver, slot mapp
 
 **Main idea:**  
 This paper presents a software implementation of an erasure code and explains how Forward Error Correction can reduce or remove the need for retransmissions when communication errors or packet losses occur.
+
 **Why it matters for this project:**  
 This source supports the general FEC idea used in the project that is adding redundancy before transmission so that missing or erased data can be reconstructed at the receiver.
+
 **Useful concepts:**  
 Forward Error Correction, erasure code, packet loss, retransmission avoidance, unreliable communication channels.
 
@@ -318,8 +330,10 @@ Forward Error Correction, erasure code, packet loss, retransmission avoidance, u
 
 **Main idea:**  
 This review explains detector dead time and pulse pile-up, including how detectors can lose counts or produce distorted measurements at high count rates.
+
 **Why it matters for this project:**  
 This source supports the inclusion of detector limitations such as dead time, count loss, and pulse pile-up in a simplified detector model.
+
 **Useful concepts:**  
 Dead time, resolving time, count loss, pulse pile-up, paralyzable detector model, nonparalyzable detector model.
 
