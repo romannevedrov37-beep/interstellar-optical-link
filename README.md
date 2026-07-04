@@ -170,6 +170,7 @@ real-world optical beam steering errors;
 a complete astrophysical model of background radiation;
 the detector’s hardware electronics;
 real-world mission constraints in real-time mode.
+This project is limited to simulation. It does not attempt to design or build real optical hardware, laser transmitters, telescope receivers, or SNSPD detector systems.
 
 ## Current Final Goal
 
