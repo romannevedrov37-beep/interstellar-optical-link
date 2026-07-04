@@ -175,6 +175,3 @@ This project is limited to simulation. It does not attempt to design or build re
 ## Current Final Goal
 
 By the end of this project, the repository should contain a working simulation pipeline, experimental results, graphs, and a written analysis showing when structured messages can or cannot be recovered under 15–20% erasure and burst-loss conditions.
-
-git add README.md
-git commit -m "Write initial project README"
