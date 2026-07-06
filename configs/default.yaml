@@ -1,0 +1,4 @@
+wavelength_nm: 1550
+slot_duration_ns: 1
+ppm_order: 16
+erasure_rate: 0.15
