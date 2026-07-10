@@ -1,0 +1,6 @@
+distance_ly: 4.24
+wavelength_nm: 1550
+transmit_aperture_m: 0.3
+transmit_power_w: 1.0e9
+receive_aperture_m: 1.0
+slot_duration_ns: 1
