@@ -11,3 +11,15 @@ def sample_photon_counts(lambda_: float, size: int, seed: int = None) -> np.ndar
     """
     rng = np.random.default_rng(seed)
     return rng.poisson(lambda_, size)
+
+def combined_lambda(lambda_signal: float, lambda_background: float, dark_count_rate: float, pulsed: bool) -> float:
+    """
+    Combine signal, background, and dark count contributions
+    into a single expected photon count for one slot.
+    """
+    if pulsed == True:
+        total_lambda = lambda_signal + lambda_background + dark_count_rate
+    else:
+        total_lambda = lambda_background + dark_count_rate
+    return total_lambda
+      
