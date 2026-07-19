@@ -38,6 +38,8 @@ def run_uncoded_pipeline(payload, ppm_order, lambda_signal, lambda_background, d
 
     decoded_bits = []
     rng_seed = seed
+    bits = rng.integers(0, 2, size=num_bits)
+    np.random.default_rng(seed)
 
     for i in range(0, len(bits), bits_per_symbol):
         symbol_bits = bits[i:i+bits_per_symbol]

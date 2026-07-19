@@ -14,7 +14,7 @@ print(f"Unpulsed slot counts: {unpulsed_counts}")
 
 from src.channel.poisson_channel import sample_photon_counts, combined_lambda
 
-dark_count_rate = 0.001  # per slot, типичное значение для SNSPD
+dark_count_rate = 0.001  
 
 pulsed_lambda = combined_lambda(lambda_signal, lambda_background, dark_count_rate, pulsed=True)
 unpulsed_lambda = combined_lambda(lambda_signal, lambda_background, dark_count_rate, pulsed=False)

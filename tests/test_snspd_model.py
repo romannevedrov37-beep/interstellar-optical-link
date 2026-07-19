@@ -39,5 +39,5 @@ encoder = PPMEncoder(ppm_order=16)
 frame = encoder.encode_symbol([1, 0, 1, 0])
 print(f"Before jitter: {frame}")
 
-jittered = detector.apply_jitter(frame, jitter_probability=0.5, seed=2)
+jittered = detector.apply_jitter(frame, jitter_probability=0.9, seed=2)
 print(f"After jitter:  {jittered}")
