@@ -24,3 +24,28 @@ df = pd.DataFrame(results)
 print(df)
 
 df.to_csv("results/uncoded_baseline.csv", index=False)
+
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(8, 5))
+plt.plot(df["lambda_signal"], df["ber"], 'o-', label="BER")
+plt.plot(df["lambda_signal"], df["ser"], 's-', label="SER")
+plt.xscale('log')
+plt.xlabel("lambda_signal (log scale)")
+plt.ylabel("Error rate")
+plt.title("Uncoded baseline: BER and SER vs signal strength")
+plt.legend()
+plt.grid(True, alpha=0.3)
+plt.savefig("figures/uncoded_baseline_ber_ser.png")
+plt.show()
+
+plt.figure(figsize=(8, 5))
+success_numeric = df["success"].astype(int)
+plt.plot(df["lambda_signal"], success_numeric, 'o-', color='green')
+plt.xscale('log')
+plt.xlabel("lambda_signal (log scale)")
+plt.ylabel("Recovery success (1=True, 0=False)")
+plt.title("Uncoded baseline: message recovery success vs signal strength")
+plt.grid(True, alpha=0.3)
+plt.savefig("figures/uncoded_baseline_success.png")
+plt.show()
