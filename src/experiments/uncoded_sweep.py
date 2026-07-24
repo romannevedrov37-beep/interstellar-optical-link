@@ -1,4 +1,5 @@
 import numpy as np
+from src.channel.erasure_model import generate_erasure_mask
 from src.modem.ppm_encoder import PPMEncoder
 from src.modem.ppm_decoder import PPMDecoder
 from src.channel.poisson_channel import sample_photon_counts
@@ -32,3 +33,32 @@ def run_trial(lambda_signal, lambda_background, dark_rate, eta, ppm_order, num_b
     ser =symbol_error_rate(bits, decoded_bits, bits_per_symbol)
     success = recovery_success(bits, decoded_bits)
     return {"lambda_signal": lambda_signal, "ber": ber, "ser": ser, "success": success}
+
+from src.channel.erasure_model import generate_erasure_mask
+def run_trial_with_erasures(bits, ppm_order, erasure_rate, seed):
+    """
+    Encode bits into PPM symbols, apply an iid erasure mask directly
+    (bypassing the photon channel), and measure recovery metrics.
+    Erased symbols are treated as fully lost (all bits wrong).
+    """
+    encoder = PPMEncoder(ppm_order=ppm_order)
+    decoder = PPMDecoder(ppm_order=ppm_order)
+    bits_per_symbol = encoder.bits_per_symbol
+    symbol_groups = []
+    for i in range(0, len(bits), bits_per_symbol):
+        symbol_bits = bits[i:i+bits_per_symbol]
+        symbol_groups.append(symbol_bits)
+    num_symbols = len(symbol_groups)
+    erasure_mask = generate_erasure_mask(num_symbols=num_symbols, erasure_rate=erasure_rate, seed=seed)
+    decoded_bits = []
+    for symbol_bits, is_erased in zip(symbol_groups, erasure_mask):
+        if is_erased:
+            decoded_bits.extend(1 - bit for bit in symbol_bits)
+        else:
+            frame = encoder.encode_symbol(symbol_bits)
+            decoded_symbol_bits = decoder.decode_symbol(frame)
+            decoded_bits.extend(decoded_symbol_bits)
+    ber = bit_error_rate(bits,decoded_bits)
+    ser = symbol_error_rate(bits,decoded_bits,bits_per_symbol)
+    success = recovery_success(bits,decoded_bits)
+    return {"erasure_rate": erasure_rate, "ber": ber, "ser": ser, "success": success}
