@@ -12,7 +12,7 @@ diffraction-limited spot size (see notebooks/01_link_budget_basics.ipynb).
 | Transmit aperture diameter | 0.3 m |
 | Laser power (transmitter) | 1×10⁹ W (1 GW) |
 | Receive telescope diameter | 1.0 m |
-| Beam divergence angle (theta) | wavelength / transmit_aperture_diameter |
+| Beam divergence angle (theta) | 1.22 * wavelength / transmit_aperture_diameter |
 | Received power | ≈5.82×10⁻¹⁵ W |
 | Photons per second | ≈45,414 |
 | Slot duration | 1 ns (1×10⁻⁹ s) |
