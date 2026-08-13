@@ -4,7 +4,7 @@ sys.path.append('.')
 import pandas as pd
 from src.experiments.uncoded_sweep import run_trial
 
-lambda_signal_values = [0.05, 0.1, 0.5, 1.0, 2.0, 5.0, 10.0, 50.0]
+lambda_signal_values = [3.05e-5, 1e-4, 1e-3, 0.01, 0.05, 0.1, 0.5, 1.0, 2.0, 5.0, 10.0, 50.0]
 
 results = []
 
