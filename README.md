@@ -128,15 +128,41 @@ tests/ — unit tests for the main components of the simulation pipeline.
 
 ## Current Status
 
-Initial phase of research and project setup.
+Phases 1–3 are complete: the physical link-budget model, the Poisson
+photon-counting channel, the SNSPD-type detector model, and PPM
+encoding/decoding are implemented and independently validated.
 
-Currently in progress:
+The photon-rate calculation was cross-checked against `PyCom`
+(Hippke et al., open-source reference implementation for interstellar
+optical links). An initial 48.8% discrepancy was traced to a missing
+Airy-disk diffraction factor for the circular transmit aperture;
+after correction, this project's results agree with PyCom to within
+floating-point noise (~10⁻⁸ relative). See `docs/validation.md` for
+the full record.
 
-- formulating the research question;
-- setting up the repository;
-- creating the first project documents;
-- setting up the Python environment;
-- building the first link budget and photon-rate models.
+The no-FEC baseline has been swept across signal strengths spanning
+the realistic interstellar photon-starved regime (λ ≈ 3×10⁻⁵
+photons/slot) up through a fully reliable regime (λ = 50). Results
+show a sharp reliability threshold between λ = 5 and λ = 10; at the
+physically realistic photon budget, uncoded transmission fails almost
+completely (SER > 95%). This is the baseline against which Reed–Solomon
+coding will be compared.
+
+Erasure and burst-loss behavior (iid vs. grouped losses) has been
+characterized separately under a swept erasure-rate parameter. Linking
+that erasure rate directly to physical photon-arrival statistics
+(rather than treating it as an independent sweep variable) remains
+open and is planned for Phase 4 completion.
+
+**Not yet implemented:** Reed–Solomon coding, interleaving, and packet
+framing. The current pipeline operates on raw bit streams with no
+error correction — this is the baseline, not a working link.
+
+**Currently in progress:**
+- Photon-efficiency metrics (bits delivered per photon spent),
+  implemented and unit-tested in `src/metrics/photon_efficiency.py`;
+  not yet applied to the full experiment sweep.
+- Phase 3A framing (packet structure, headers, checksums).
 
 ## Roadmap
 

@@ -25,7 +25,7 @@ project's code and PyCom for comparison.
 | Transmit aperture diameter | 0.3 m |
 | Laser power (transmitter) | 1×10⁹ W (1 GW) |
 | Receive telescope diameter | 1.0 m |
-| Beam divergence angle (theta) |1,22 wavelength / transmit_aperture_diameter|
+| Beam divergence angle (theta) | 1.22 × wavelength / transmit_aperture_diameter |
 
 ## Round 1: initial comparison
 
@@ -53,19 +53,33 @@ enters squared:
 which matches the observed 48.8% discrepancy almost exactly, confirming
 this as the source of the error.
 
-## Round 2: after correction
+## Round 2: Airy factor added, but a second typo remained
 
 | | Photon rate (photons/s) |
 |---|---|
-| My result | 31039.49|
+| My result | 31,039.49 |
 | PyCom result | 30,532.73 |
 | Discrepancy | 1.66% |
 
+This was an improvement over Round 1, but not yet exact agreement.
+The cause turned out to be a second, independent typo: the divergence
+formula in `photon_rate.py` used `1.21` instead of `1.22` as the Airy
+coefficient — a transcription error, not a physics error, but it
+still measurably shifted the result.
+
+## Round 3: after fixing the coefficient typo
+
+| | Photon rate (photons/s) |
+|---|---|
+| My result | 30532.733073028012 |
+| PyCom result | 30532.733579904718 |
+| Discrepancy | ~1.66×10⁻⁸ (floating-point noise) |
+
 ## Residual discrepancy
 
-None. After correcting a typo in the divergence-angle coefficient
-(1.21 instead of the physically correct 1.22), the discrepancy against
-PyCom dropped to floating-point noise (~10⁻⁸ relative), confirming
+None. After correcting both the missing Airy-disk factor (Round 1→2)
+and a transcription typo in that same coefficient (Round 2→3), the
+discrepancy against PyCom dropped to floating-point noise, confirming
 exact agreement between the two implementations on identical inputs.
 
 ## Downstream impact — to verify
@@ -131,3 +145,5 @@ approximation to the Airy-disk result for a circular aperture, this
 project's photon-rate calculation agrees with PyCom to within 1.7% on
 identical inputs, validating the implementation against a published
 reference tool.
+
+
