@@ -23,7 +23,7 @@ below the threshold, error rates rise sharply (SER=95% at lambda_signal=0.05,
 close to realistic interstellar photon counts); above it, recovery is
 essentially perfect (BER=SER=0, success=True).
 
-At the realistic Alpha Centauri benchmark scale (lambda ~ 4.5e-5, from the
+At the realistic Alpha Centauri benchmark scale (lambda ~ 3.0e-5, from the
 05.07 link budget), the uncoded pipeline would fail almost completely.
 This confirms the core premise of the project: FEC is not optional for a
 photon-starved channel, it is required for any usable link.
@@ -49,3 +49,4 @@ photon-starved channel, it is required for any usable link.
   uncoded pipeline's failure at realistic photon counts — this baseline
   sweep will serve as the direct comparison point for RS-only and
   RS+interleaving results later in the project.
+  
